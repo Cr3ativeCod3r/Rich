@@ -1,0 +1,167 @@
+.box {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 500px;
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+#rich-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.person-card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  height: 300px;
+}
+
+.person-card img {
+  width: 120px;
+  height: 100px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: #000 solid 1px;
+}
+
+.person-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.person-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100px;
+  text-align: center;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#pick {
+  color: #c62828;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#font-select {
+  border: 2px solid #c62828;
+  border-radius: 5px;
+  padding: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #c62828;
+  background-color: #ffffff;
+}
+
+#font-select option {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #c62828;
+  background-color: #ffffff;
+}
+
+#font-select option:hover {
+  background-color: #c62828;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #c62828;
+  margin-bottom: 10px;
+}
+
+#search-input,
+#update-wealth-btn,
+#sort-checkbox,
+#sortupCheckbox,
+[name="filter-radio"],
+#wealth-input {
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #c62828;
+  border-radius: 4px;
+}
+
+#update-wealth-btn {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="checkbox"]:checked + label {
+  font-weight: bold;
+}
