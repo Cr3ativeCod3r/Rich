@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -72,7 +72,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 20px;
       }
 
       .person-card {
@@ -84,12 +83,14 @@
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
+        line-height: 20px;
+        height: auto;
+        max-height: 150px;
       }
 
       .person-card img {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         border-radius: 5px;
         border: #000 solid 1px;
       }
@@ -99,45 +100,85 @@
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       }
 
-      .box {
-        width: 100%;
-        max-width: 50%;
-        margin-top: 20px;
+      .box,
+      .box2 {
+        width: 40%;
+        margin-right: 20px;
         padding: 20px;
-        background-color: #fff;
+        background-color: #ffffff;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+        overflow-y: auto;
+        height: 640px;
       }
-      #logoutButton
-      {
+      .box2 {
+        width: 20%;
+      }
+
+      #logoutButton {
         margin-left: auto;
         margin-right: auto;
         display: flex;
         justify-content: center;
         background-color: rgb(38, 74, 38);
       }
-      #id
-      {
+      #id {
         background-color: #917272;
         color: white;
         font-weight: bold;
-    
       }
-  input#id::placeholder {
-    color: rgb(255, 255, 255); /* Ustawienie koloru tekstu placeholdera */
-}
-     
-    </style>
-  </head>
-  <body>
+      input#id::placeholder {
+        color: rgb(255, 255, 255); 
+      }
+      input {
+        height: 20px;
+      }
+      .trescb {
+        height: 100px;
+        float: left;
+        transform: translate(10%);
+        margin-top: 10px;
+      }
+      button.trescb {
+        clear: both;
+        height: 50px;
+        width: 85%;
+        transform: translate(10%);
+      }
 
+      .post {
+        margin-bottom: 5px;
+        padding: 5px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        height: auto;
+        font-size: 10px;
+      }
+
+      .post p {
+        margin-bottom: 10px;
+        line-height: 12px;
+      }
+      #del {
+        height: 10px;
+      }
+      .delete-button {
+        display: flex;
+        text-align: center;
+        font-size: 0.8em;
+        background-color: red;
+      }
+    </style>
+  </head>                             
+  <body>
+    <script>var domain = '<%= domain %>';</script>
     <div class="main">
       <button type="button" id="logoutButton">Wyloguj</button>
 
-          <h2>Zarządzaj danymi</h2>
+      <h2>Zarządzaj danymi</h2>
       <form id="dataForm">
-        <input type="number" id="id" name="id" placeholder="ID bogacza" />
-     
+        <input type="number" id="idd" name="id" placeholder="ID bogacza" />
+
         <input
           type="text"
           id="imie"
@@ -165,7 +206,7 @@
           name="kraj"
           placeholder="Kraj"
           required
-        /><br />
+        /><br />x
         <input
           type="text"
           id="link_do_zdjecia"
@@ -178,9 +219,8 @@
           name="krotki_opis"
           placeholder="Krótki opis"
           required
-        ></textarea
-        >
- 
+        ></textarea>
+
         <br />
         <button type="button" onclick="dodaj()">Dodaj</button>
         <button type="button" onclick="edytuj()">Edytuj</button>
@@ -188,10 +228,29 @@
       </form>
     </div>
 
-    <div id="rich-list" class="box"></div>
-    <script src="edit.js"></script>
+    <div id="rich-list" class="box2"></div>
+    <div id="posty" class="box2"></div>
+
+    <div class="box">
+      <h3 style="text-align: center">Baner</h3>
+      <textarea
+        class="trescb"
+        name="krotki_opis"
+        placeholder="Nagłówek"
+        id="tresc"
+        required
+      ></textarea>
+
+      <textarea
+        class="trescb"
+        name="krotki_opis"
+        placeholder="Opis"
+        id="tresc2"
+        required
+      ></textarea>
+
+      <button type="button" onclick="edit()" class="trescb">edit</button>
+    </div>
+    <script src="/edit.js"></script>
   </body>
-</html> 
-
-
-
+</html>

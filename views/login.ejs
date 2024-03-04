@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-    <form action="/admin/login" method="post">
+    <form action="<%= optional %>/admin/login" method="post">
         <label for="password">Hasło:</label>
         <input type="password" id="password" name="password">
         <button type="submit">Zaloguj się</button>

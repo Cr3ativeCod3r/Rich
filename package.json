@@ -5,16 +5,18 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon backend/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
     "express-session": "^1.18.0",
     "expressjs": "^1.0.1",
     "mariadb": "^3.2.3",
+    "nodemailer": "^6.9.11",
     "nodemon": "^3.1.0",
     "path": "^0.12.7"
   }

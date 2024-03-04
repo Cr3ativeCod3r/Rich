@@ -1,3 +1,5 @@
+//FILTER && FETCH ENDPOINT
+
 document.addEventListener("DOMContentLoaded", () => {
   const richListContainer = document.getElementById("rich-list");
   const updateButton = document.getElementById("update-wealth-btn");
@@ -44,9 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //FETCH
 
   function fetchRichData() {
-    const domain = document.getElementById('domain').dataset.domain;
-
-    fetch("http://localhost:3000/rich")
+    fetch(`${domain}/rich`)
       .then((response) => response.json())
       .then((data) => {
         richData = data;
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     displayRichData(sortedData);
   }
 
-  //SHOWRICH
+  //DISPLAY SCRIPT
 
   function displayRichData(data) {
     richListContainer.innerHTML = "";
@@ -138,7 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchRichData();
+
+  fetch(`${domain}/api/dynamic-content`)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("dynamic-content").innerText = data.content;
+      console.log(data.content2);
+      document.getElementById("opis").innerText = data.content2;
+    })
+    .catch((error) => console.error("ERROR:", error));
 });
+
 
 //DESCRIPION
 
@@ -179,7 +189,7 @@ function showModal(description) {
   modal.style.display = "block";
 }
 
-//COINS
+//CoinsFromAPI
 
 fetch("https://api.nbp.pl/api/exchangerates/tables/a/?format=json")
   .then((response) => response.json())
@@ -197,3 +207,65 @@ fetch("https://api.nbp.pl/api/exchangerates/tables/a/?format=json")
     document.getElementById("CHF").innerText = `${chfRate.mid} PLN`;
   })
   .catch((error) => console.error("Error fetching data:", error));
+
+
+//DISPLAY && FETCH POST
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addPostForm = document.getElementById("addPostForm");
+
+  addPostForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(addPostForm);
+    const nick = formData.get("nick");
+    const tresc = formData.get("tresc");
+
+    fetch(`${domain}/post/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ nick: nick, tresc: tresc }),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("ERROR:", error);
+      });
+    location.reload();
+  });
+});
+
+function fetchAndDisplayPosts() {
+  const teamDiv = document.getElementById("posty");
+
+  fetch(`${domain}/all`)
+    .then((response) => response.json())
+    .then((posts) => {
+      posts.forEach((post) => {
+     
+          const postDiv = document.createElement("div");
+          postDiv.classList.add("post");
+
+          const postContent = `
+                      <span class="comment"> <p class="nick">${post.nick}  <span class="time">${post.czas}</span></p> <span>
+                      <p>${post.tresc}</p>
+                  `;
+
+          postDiv.innerHTML = postContent;
+          teamDiv.appendChild(postDiv);
+        
+      });
+    })
+    .catch((error) => {
+      console.error("ERROR:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetchAndDisplayPosts();
+});
+
