@@ -3,7 +3,7 @@ Site - https://kamil-banaszek.pl/projekt
 ### DESCRIPTION
 A simple website with server-side rendering content and a CMS (Content Management System for managing this content). The project showcases the capabilities of a RESTful API, creating and working with this API.
 
-![image](https://github.com/Cr3ativeCod3r/SSR-with-CMS-site/assets/117399144/89ed342e-a291-43a7-9634-ffe1cff02594)
+![image](https://github.com/Cr3ativeCod3r/SSR-with-CMS-site/assets/117399144/aa7ec6e0-dc46-4f9d-b580-1efb6e3926d0)
 
 
 ### FEATURES
