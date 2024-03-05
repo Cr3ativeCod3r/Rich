@@ -1,3 +1,5 @@
+link - https://kamil-banaszek.pl/projekt
+
 ### DESCRIPTION
 A simple website with server-side rendering content and a CMS (Content Management System for managing this content). The project showcases the capabilities of a RESTful API, creating and working with this API.
 
