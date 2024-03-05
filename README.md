@@ -36,6 +36,7 @@ npm start
 4. Optional if you are using Nginx
    
 Homepage:
+```bash
 location / {
         proxy_pass http://localhost:6000;
         proxy_http_version 1.1;
@@ -54,4 +55,5 @@ location /server/ {
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
 }
+```
 
