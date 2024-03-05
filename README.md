@@ -30,8 +30,7 @@ Frontend:
 ```bash
 npm install
 ```
-3. Start
-Start script:
+3. Start script:
 ```bash
 npm start
 ```
