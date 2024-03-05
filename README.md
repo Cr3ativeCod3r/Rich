@@ -1,4 +1,4 @@
-Site - https://kamil-banaszek.pl/projekt
+Site - https://kamil-banaszek.pl/projekt Admin Password to CMS - 1234
 
 ### DESCRIPTION
 A simple website with server-side rendering content and a CMS (Content Management System for managing this content). The project showcases the capabilities of a RESTful API, creating and working with this API.
