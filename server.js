@@ -2,7 +2,7 @@ const express = require("express");
 const mariadb = require("mariadb");
 const path = require("path");
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const cors = require("cors");
 const session = require("express-session");
 
@@ -123,18 +123,6 @@ app.get(process.env.DOMAIN + "/all", async (req, res) => {
 });
 app.post(process.env.DOMAIN + "/post/add", (req, res) => {
   const { nick, tresc } = req.body;
-  if (nick.length > 20) {
-    return res
-      .status(400)
-      .send("Nick is too long. Maximum length is 20 characters.");
-  }
-  const words = tresc.trim().split(/\s+/);
-  if (words.length > 1000) {
-    return res
-      .status(400)
-      .send("Content is too long. Maximum word count is 1000.");
-  }
-
   var now = new Date();
   var czas = `${(now.getHours() < 10 ? "0" : "") + now.getHours()}:${
     (now.getMinutes() < 10 ? "0" : "") + now.getMinutes()

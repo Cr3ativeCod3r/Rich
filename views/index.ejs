@@ -5,34 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
   <!-- Custom CSS  AND JS -->
-  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/index.css">
   <script type="text/javascript" src="/script.js"></script>
-    
 
   <title>Rich</title>
 </head>
-
 <body>
   <script>var domain = '<%= domain %>';</script>
   <div id="domain" data-domain="<%= process.env.DOMAIN %>"></div>
   <nav class="navbar navbar-expand-sm navbar-dark bg-danger pl-5 fixed-top">
     <a href="index.html" class="navbar-brand">Money Hub</a>
-   
-
-
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,32 +37,26 @@
         <li class="nav-item"><a href="#Contact" class="nav-link">Kontakt</a></li>
         <li class="nav-item"><a href="#Komentarze" class="nav-link">Dyskusja</a></li>
         <li class="nav-item"><a href="/server/admin" target="_blank" class="nav-link">Admin</a></li>
-        <li class="nav-item"><a href="https://github.com/Cr3ativeCod3r/Rich" target="_blank" class="nav-link">GitHub</a></li>
-
+        <li class="nav-item"><a href="https://github.com/Cr3ativeCod3r/Rich" target="_blank" class="nav-link">GitHub</a>
+        </li>
       </ul>
     </div>
-  
-  
-  </nav> 
-
-
-  <header class="jumbotron back-image" >
-
-     
-  </video>
+    <div id="gettime"></div>
+  </nav>
+  <header class="jumbotron back-image">
+    </video>
     <div class="text-center" style="margin-top: 120px;">
       <h3 class="text-uppercase text-danger font-weight-bold" id="dynamic-content">cos</h3>
       <p class="font-italic font-weight-bold st" id="opis">Miłego oglądania</p>
-      <label for="font-select" id="pick" >Wybierz kroj czcionki:</label>
+      <label for="font-select" id="pick">Wybierz kroj czcionki:</label>
       <select id="font-select">
         <option value="Arial">Arial</option>
         <option value="Times New Roman">Times New Roman</option>
         <option value="Courier New">Courier New</option>
       </select>
     </div>
-  </header> 
-
-  <div class="container text-center border-bottom" id="Services"> 
+  </header>
+  <div class="container text-center border-bottom" id="Services">
     <h2>Lista najbogatszych ludzi</h2>
     <input type="text" id="search-input" placeholder="Wyszukaj...">
     <button id="update-wealth-btn">Aktualizuj dane</button>
@@ -79,126 +67,103 @@
     <label><input type="radio" name="filter-radio" value="all" checked> Wszyscy</label>
     <label><input type="radio" name="filter-radio" value="above-1m"> Powyżej majątku</label>
     <input type="text" id="wealth-input" placeholder="Wpisz wartość majątku..."> mln $
-    
   </div>
   <div id="rich-list" class="box"></div>
-
-
-  
-
-
-
-
-  <div class="jumbotron bg-danger" id="Team">  
-    <div class="container">    
-      <h2 class="text-center text-white">Aktualne kursy walut</h2>    
-      <div class="row mt-5">    
-        <div class="col-lg-3 col-sm-6">    
+  <div class="jumbotron bg-danger" id="Team">
+    <div class="container">
+      <h2 class="text-center text-white">Aktualne kursy walut</h2>
+      <div class="row mt-5">
+        <div class="col-lg-3 col-sm-6">
           <div class="card shadow-lg mb-2">
             <div class="card-body text-center">
-         
               <h4 class="card-title">Dolar $</h4>
               <p class="card-text" id="USD">USD</p>
             </div>
           </div>
-        </div>  
-
-        <div class="col-lg-3 col-sm-6">    
+        </div>
+        <div class="col-lg-3 col-sm-6">
           <div class="card shadow-lg mb-2">
             <div class="card-body text-center">
-             
               <h4 class="card-title">Euro €</h4>
               <p class="card-text" id="EUR">EUR</p>
             </div>
           </div>
-        </div> 
-
-        <div class="col-lg-3 col-sm-6">      
+        </div>
+        <div class="col-lg-3 col-sm-6">
           <div class="card shadow-lg mb-2">
             <div class="card-body text-center">
-           
               <h4 class="card-title">Frank ƒ</h4>
               <p class="card-text" id="CHF">CNY</p>
             </div>
           </div>
-        </div>     
-
-        <div class="col-lg-3 col-sm-6">     
+        </div>
+        <div class="col-lg-3 col-sm-6">
           <div class="card shadow-lg mb-2">
             <div class="card-body text-center">
-            
               <h4 class="card-title">Yen ¥</h4>
               <p class="card-text" id="CNY"></p>
             </div>
           </div>
-        </div>    
-      </div>    
-    </div> 
-  </div> 
- 
-    <div class="jumbotron bg-danger" id="Komentarze">
-    
-      <form id="addPostForm">
-          <div class="form-group">
-              <label for="nick">Nick:</label>
-              <input type="text" class="form-control" id="nick" name="nick" required>
-          </div>
-          <div class="form-group">
-              <label for="tresc">Treść:</label>
-              <textarea class="form-control" id="tresc" name="tresc" rows="3" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Dodaj post</button>
-      </form>
-<div id="posty"></div>
+        </div>
+      </div>
     </div>
-
-
-  <div class="container" id="Contact"> 
-    <h2 class="text-center mb-4">Skontaktuj się ze mną</h2>  
-    <div class="row">        
-      <div class="col-md-8">  
+  </div>
+  <div class="jumbotron bg-danger" id="Komentarze">
+    <form id="addPostForm">
+      <div class="form-group">
+        <label for="nick">Nick:</label>
+        <input type="text" class="form-control" id="nick" name="nick" required>
+      </div>
+      <div class="form-group">
+        <label for="tresc">Treść:</label>
+        <textarea class="form-control" id="tresc" name="tresc" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj post</button>
+    </form>
+    <div id="posty"></div>
+  </div>
+  <div class="container" id="Contact">
+    <h2 class="text-center mb-4">Skontaktuj się ze mną</h2>
+    <div class="row">
+      <div class="col-md-8">
         <form action="http://localhost:3000/submit-form" method="post">
           <input class="form-control" name="name" placeholder="Imię" required title="Pole wymagane" /><br />
-          <input class="form-control" name="phone" placeholder="Telefon" pattern="[0-9]{9}" title="Telefon musi składać się z 9 cyfr" /><br />
-          <input class="form-control" name="email" type="email" placeholder="E-mail" required title="Pole wymagane" /><br />
-          <textarea class="form-control" name="message" placeholder="Jak mogę Ci pomóc?" style="height:150px;" required title="Pole wymagane"></textarea><br />
+          <input class="form-control" name="phone" placeholder="Telefon" pattern="[0-9]{9}"
+            title="Telefon musi składać się z 9 cyfr" /><br />
+          <input class="form-control" name="email" type="email" placeholder="E-mail" required
+            title="Pole wymagane" /><br />
+          <textarea class="form-control" name="message" placeholder="Jak mogę Ci pomóc?" style="height:150px;" required
+            title="Pole wymagane"></textarea><br />
           <button class="btn btn-primary" type="submit">Wyślij</button><br /><br />
-      </form>
-      
-    </div>  
-    
-
-      <div class="col-md-4 text-center">   
-        
-    
+        </form>
+      </div>
+      <div class="col-md-4 text-center">
         <br><br>
         <strong>Kamil Banaszek:</strong> <br>
         Lublin, <br>
         + 48 432 324 342 <br>
         <a href="https://www.kamil-banaszek.pl" target="_blank">www.kamil-banaszek.pl</a> <br>
-      </div>    
-    </div>    
-  </div> 
-
-
+      </div>
+    </div>
+  </div>
   <footer class="container-fluid bg-dark text-white mt-5" style="border-top: 3px solid #DC3545;">
-    <div class="container">  
-      <div class="row py-3">   
-    
-        
-
-        <div class="col-md-6" style="margin-left: auto; margin-right: auto; text-align: center;">   
-          <a href="https://www.kamil-banaszek.pl" target="_blank" style=" text-align: center;"> <span style="color:white">Designed by</span> Banaszek &copy; 2024.</a>
-        </div>    
-      </div>   
-    </div>    
-  </footer> 
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <div class="container">
+      <div class="row py-3">
+        <div class="col-md-6" style="margin-left: auto; margin-right: auto; text-align: center;">
+          <a href="https://www.kamil-banaszek.pl" target="_blank" style=" text-align: center;"> <span
+              style="color:white">Designed by</span> Banaszek &copy; 2024.</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 </body>
 </html>

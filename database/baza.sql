@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS post (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nick VARCHAR(255) NOT NULL DEFAULT "anonim",
     tresc TEXT,
-    czas VARCHAR(255),
+    czas VARCHAR(255)
 );
 
 INSERT INTO ludzie (imie, wiek, majatek, kraj, link_do_zdjecia, krotki_opis) VALUES

@@ -1,4 +1,3 @@
-
 function dodaj() {
   const formData = new FormData(document.getElementById("dataForm"));
   fetch(`${domain}/edit/add`, {
@@ -88,7 +87,7 @@ function displayRichData(data) {
       if (person.imie.toLowerCase().includes(searchValue)) {
         personCard.style.display = "block";
       } else {
-        personCard.style.display = "none"; 
+        personCard.style.display = "none";
       }
     });
   });
@@ -96,7 +95,7 @@ function displayRichData(data) {
   data.forEach((person) => {
     const personCard = document.createElement("div");
     personCard.classList.add("person-card", "fade-in");
-    personCard.id = `person-${person.id}`; 
+    personCard.id = `person-${person.id}`;
 
     const image = document.createElement("img");
     image.src = person.link_do_zdjecia;
@@ -159,37 +158,36 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((posts) => {
       posts.forEach((post) => {
-          const postDiv = document.createElement("div");
-          postDiv.classList.add("post");
-          postDiv.id = `usun-${post.id}`;
+        const postDiv = document.createElement("div");
+        postDiv.classList.add("post");
+        postDiv.id = `usun-${post.id}`;
 
-          const postContent = `
+        const postContent = `
                       <h4>${post.nick} - ${post.czas} </h4>
                       <p>${post.tresc}</p>
                       <button class="delete-button">DELETE</button>
                   `;
 
-          postDiv.innerHTML = postContent;
-          teamDiv.appendChild(postDiv);
+        postDiv.innerHTML = postContent;
+        teamDiv.appendChild(postDiv);
 
-          const deleteButton = postDiv.querySelector(".delete-button");
-          deleteButton.addEventListener("click", function () {
-            const postId = post.id;
+        const deleteButton = postDiv.querySelector(".delete-button");
+        deleteButton.addEventListener("click", function () {
+          const postId = post.id;
 
-            fetch(`${domain}/post/delete/${postId}`, {
-              method: "DELETE",
+          fetch(`${domain}/post/delete/${postId}`, {
+            method: "DELETE",
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              console.log(data);
+              postDiv.remove();
             })
-              .then((response) => response.text())
-              .then((data) => {
-                console.log(data);
-                postDiv.remove();
-              })
-              .catch((error) => {
-                console.error("ERROR:", error);
-              });
-            location.reload();
-          });
-        
+            .catch((error) => {
+              console.error("ERROR:", error);
+            });
+          location.reload();
+        });
       });
     })
     .catch((error) => {

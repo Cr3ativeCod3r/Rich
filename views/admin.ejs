@@ -2,176 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/admin.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-        line-height: 0.5;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-      }
-
-      .main {
-        background-color: #fff;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 40%;
-        margin-right: 50px;
-        border-radius: 8px;
-        height: 680px;
-      }
-
-      h2 {
-        text-align: center;
-        color: #333;
-      }
-
-      form {
-        display: grid;
-        grid-gap: 5px;
-      }
-
-      input[type="text"],
-      input[type="number"],
-      textarea,
-      input {
-        width: 80%;
-
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #f1f1f1;
-        padding: 10px;
-      }
-
-      button {
-        margin-left: auto;
-        margin-right: auto;
-
-        background-color: #4caf50;
-        color: white;
-        padding: 10px;
-        margin-top: 10px;
-        border: none;
-        cursor: pointer;
-        width: 80%;
-        opacity: 0.9;
-        border-radius: 4px;
-      }
-
-      button:hover {
-        opacity: 1;
-      }
-
-      #rich-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .person-card {
-        width: 100px;
-        margin: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        line-height: 20px;
-        height: auto;
-        max-height: 150px;
-      }
-
-      .person-card img {
-        width: 30px;
-        height: 30px;
-        border-radius: 5px;
-        border: #000 solid 1px;
-      }
-
-      .person-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .box,
-      .box2 {
-        width: 40%;
-        margin-right: 20px;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow-y: auto;
-        height: 640px;
-      }
-      .box2 {
-        width: 20%;
-      }
-
-      #logoutButton {
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        justify-content: center;
-        background-color: rgb(38, 74, 38);
-      }
-      #id {
-        background-color: #917272;
-        color: white;
-        font-weight: bold;
-      }
-      input#id::placeholder {
-        color: rgb(255, 255, 255); 
-      }
-      input {
-        height: 20px;
-      }
-      .trescb {
-        height: 100px;
-        float: left;
-        transform: translate(10%);
-        margin-top: 10px;
-      }
-      button.trescb {
-        clear: both;
-        height: 50px;
-        width: 85%;
-        transform: translate(10%);
-      }
-
-      .post {
-        margin-bottom: 5px;
-        padding: 5px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        height: auto;
-        font-size: 10px;
-      }
-
-      .post p {
-        margin-bottom: 10px;
-        line-height: 12px;
-      }
-      #del {
-        height: 10px;
-      }
-      .delete-button {
-        display: flex;
-        text-align: center;
-        font-size: 0.8em;
-        background-color: red;
-      }
-    </style>
-  </head>                             
+  </head>
   <body>
-    <script>var domain = '<%= domain %>';</script>
+    <script>
+      var domain = "<%= domain %>";
+    </script>
     <div class="main">
       <button type="button" id="logoutButton">Wyloguj</button>
 
@@ -184,42 +22,36 @@
           id="imie"
           name="imie"
           placeholder="Imię"
-          required
-        /><br />
+          required /><br />
         <input
           type="number"
           id="wiek"
           name="wiek"
           placeholder="Wiek"
-          required
-        /><br />
+          required /><br />
         <input
           type="number"
           id="majatek"
           name="majatek"
           placeholder="Majątek"
-          required
-        /><br />
+          required /><br />
         <input
           type="text"
           id="kraj"
           name="kraj"
           placeholder="Kraj"
-          required
-        /><br />x
+          required /><br />x
         <input
           type="text"
           id="link_do_zdjecia"
           name="link_do_zdjecia"
           placeholder="Link do zdjęcia"
-          required
-        /><br />
+          required /><br />
         <textarea
           id="krotki_opis"
           name="krotki_opis"
           placeholder="Krótki opis"
-          required
-        ></textarea>
+          required></textarea>
 
         <br />
         <button type="button" onclick="dodaj()">Dodaj</button>
@@ -238,16 +70,14 @@
         name="krotki_opis"
         placeholder="Nagłówek"
         id="tresc"
-        required
-      ></textarea>
+        required></textarea>
 
       <textarea
         class="trescb"
         name="krotki_opis"
         placeholder="Opis"
         id="tresc2"
-        required
-      ></textarea>
+        required></textarea>
 
       <button type="button" onclick="edit()" class="trescb">edit</button>
     </div>

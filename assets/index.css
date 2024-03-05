@@ -7,8 +7,6 @@
   margin-top: 20px;
 }
 
-
-
 .border-bottom {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
@@ -81,7 +79,7 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 500px;
+  max-width: 500px;
   text-align: center;
 }
 
@@ -164,7 +162,7 @@ input[type="checkbox"] {
   margin-right: 5px;
 }
 
-input[type="checkbox"]:checked+label {
+input[type="checkbox"]:checked + label {
   font-weight: bold;
 }
 
@@ -186,8 +184,27 @@ input[type="checkbox"]:checked+label {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation-name: fadeInPost;
+  animation-duration: 0.5s;
 }
 
+@keyframes fadeInPost {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .post,
+  #addPostForm {
+    width: 100%;
+  }
+}
 .post h4 {
   margin-bottom: 10px;
   font-size: 18px;

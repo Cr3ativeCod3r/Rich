@@ -138,17 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchRichData();
-
-  fetch(`${domain}/api/dynamic-content`)
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("dynamic-content").innerText = data.content;
-      console.log(data.content2);
-      document.getElementById("opis").innerText = data.content2;
-    })
-    .catch((error) => console.error("ERROR:", error));
 });
-
 
 //DESCRIPION
 
@@ -208,7 +198,6 @@ fetch("https://api.nbp.pl/api/exchangerates/tables/a/?format=json")
   })
   .catch((error) => console.error("Error fetching data:", error));
 
-
 //DISPLAY && FETCH POST
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -235,29 +224,30 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("ERROR:", error);
       });
-    location.reload();
+
+    setTimeout(() => {
+      fetchAndDisplayPosts();
+    }, 1000);
   });
 });
 
 function fetchAndDisplayPosts() {
   const teamDiv = document.getElementById("posty");
-
+  teamDiv.innerHTML = "";
   fetch(`${domain}/all`)
     .then((response) => response.json())
     .then((posts) => {
       posts.forEach((post) => {
-     
-          const postDiv = document.createElement("div");
-          postDiv.classList.add("post");
+        const postDiv = document.createElement("div");
+        postDiv.classList.add("post");
 
-          const postContent = `
+        const postContent = `
                       <span class="comment"> <p class="nick">${post.nick}  <span class="time">${post.czas}</span></p> <span>
                       <p>${post.tresc}</p>
                   `;
 
-          postDiv.innerHTML = postContent;
-          teamDiv.appendChild(postDiv);
-        
+        postDiv.innerHTML = postContent;
+        teamDiv.appendChild(postDiv);
       });
     })
     .catch((error) => {
@@ -268,4 +258,3 @@ function fetchAndDisplayPosts() {
 document.addEventListener("DOMContentLoaded", function () {
   fetchAndDisplayPosts();
 });
-
