@@ -35,8 +35,9 @@ npm start
 ```
 4. Optional if you are using Nginx
    
-Homepage:
+
 ```bash
+#Homepage:
 location / {
         proxy_pass http://localhost:6000;
         proxy_http_version 1.1;
@@ -46,7 +47,7 @@ location / {
         proxy_cache_bypass $http_upgrade;
 }
 
-CMS:
+#CMS:
 location /server/ {
         proxy_pass http://localhost:6000/server/;
         proxy_http_version 1.1;
