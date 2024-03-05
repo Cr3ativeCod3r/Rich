@@ -2,7 +2,7 @@ const express = require("express");
 const mariadb = require("mariadb");
 const path = require("path");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000 ;
 const cors = require("cors");
 const session = require("express-session");
 
