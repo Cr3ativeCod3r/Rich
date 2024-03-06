@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       personCard.appendChild(name);
 
       const age = document.createElement("p");
-      age.textContent = `Wiek: ${person.wiek}`;
+      age.textContent = `Age: ${person.wiek}`;
       personCard.appendChild(age);
 
       const kraj = document.createElement("p");
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       personCard.appendChild(kraj);
 
       const wealth = document.createElement("p");
-      wealth.textContent = `Majątek: ${person.majatek} mln $`;
+      wealth.textContent = `Assets: ${person.majatek} mln $`;
       personCard.appendChild(wealth);
 
       personCard.addEventListener("click", () => {

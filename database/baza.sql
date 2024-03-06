@@ -1,22 +1,25 @@
+
+-- Sorry for polish variables I'm too lazy to change them
+
 CREATE DATABASE IF NOT EXISTS rich3;
 
 USE rich3;
 
 CREATE TABLE IF NOT EXISTS ludzie (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    imie VARCHAR(255) NOT NULL,
-    wiek INT,
-    majatek INT,
-    kraj TEXT,
-    link_do_zdjecia TEXT,
-    krotki_opis TEXT
+    imie VARCHAR(255) NOT NULL, --name
+    wiek INT, --age
+    majatek INT, --assets
+    kraj TEXT, --country
+    link_do_zdjecia TEXT, --photo link
+    krotki_opis TEXT -- description
 );
 
 CREATE TABLE IF NOT EXISTS post (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nick VARCHAR(255) NOT NULL DEFAULT "anonim",
-    tresc TEXT,
-    czas VARCHAR(255)
+    tresc TEXT, -- content
+    czas VARCHAR(255) -- time 
 );
 
 INSERT INTO ludzie (imie, wiek, majatek, kraj, link_do_zdjecia, krotki_opis) VALUES

@@ -11,52 +11,52 @@
       var domain = "<%= domain %>";
     </script>
     <div class="main">
-      <button type="button" id="logoutButton">Wyloguj</button>
+      <button type="button" id="logoutButton">Log out</button>
 
-      <h2>Zarządzaj danymi</h2>
+      <h2>CMS system</h2>
       <form id="dataForm">
-        <input type="number" id="idd" name="id" placeholder="ID bogacza" />
+        <input type="number" id="idd" name="id" placeholder="Person ID" />
 
         <input
           type="text"
           id="imie"
           name="imie"
-          placeholder="Imię"
+          placeholder="Name"
           required /><br />
         <input
           type="number"
           id="wiek"
           name="wiek"
-          placeholder="Wiek"
+          placeholder="Age"
           required /><br />
         <input
           type="number"
           id="majatek"
           name="majatek"
-          placeholder="Majątek"
+          placeholder="Assets"
           required /><br />
         <input
           type="text"
           id="kraj"
           name="kraj"
-          placeholder="Kraj"
+          placeholder="Country"
           required /><br />x
         <input
           type="text"
           id="link_do_zdjecia"
           name="link_do_zdjecia"
-          placeholder="Link do zdjęcia"
+          placeholder="Photo link"
           required /><br />
         <textarea
           id="krotki_opis"
           name="krotki_opis"
-          placeholder="Krótki opis"
+          placeholder="Description"
           required></textarea>
 
         <br />
-        <button type="button" onclick="dodaj()">Dodaj</button>
-        <button type="button" onclick="edytuj()">Edytuj</button>
-        <button type="button" onclick="usun()">Usuń</button>
+        <button type="button" onclick="dodaj()">Add</button>
+        <button type="button" onclick="edytuj()">Edit</button>
+        <button type="button" onclick="usun()">Delete</button>
       </form>
     </div>
 
@@ -68,14 +68,14 @@
       <textarea
         class="trescb"
         name="krotki_opis"
-        placeholder="Nagłówek"
+        placeholder="Header..."
         id="tresc"
         required></textarea>
 
       <textarea
         class="trescb"
         name="krotki_opis"
-        placeholder="Opis"
+        placeholder="Some text..."
         id="tresc2"
         required></textarea>
 
