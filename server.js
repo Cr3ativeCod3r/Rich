@@ -61,6 +61,7 @@ app.get(process.env.DOMAIN + "/api/dynamic-content", (req, res) => {
 
 //ADMIN PANEL
 
+//Login
 app.post(process.env.ADDITIONAL_ENDPOINT + "/admin/login", (req, res) => {
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (req.body.password === adminPassword) {
@@ -69,6 +70,18 @@ app.post(process.env.ADDITIONAL_ENDPOINT + "/admin/login", (req, res) => {
   } else {
     res.send(alert("Wrong Password"));
   }
+});
+
+//Logout
+app.get(process.env.ADDITIONAL_ENDPOINT + "/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.clearCookie("connect.sid");
+      res.redirect(process.env.ADDITIONAL_ENDPOINT + "/login");
+    }
+  });
 });
 
 //Middleware
@@ -81,16 +94,6 @@ function checkAuth(req, res, next) {
   }
 }
 
-app.get(process.env.ADDITIONAL_ENDPOINT + "/logout", (req, res) => {
-  req.session.destroy(function (err) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.clearCookie("connect.sid");
-      res.redirect(process.env.ADDITIONAL_ENDPOINT + "/login");
-    }
-  });
-});
 
 //RESTFULAPI
 
