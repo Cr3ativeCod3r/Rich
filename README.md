@@ -30,7 +30,7 @@ Frontend:
 # Deploy
 
 1. Fill and rename to .env
-2. Intsall
+2. Install
 ```bash
 npm install
 ```
