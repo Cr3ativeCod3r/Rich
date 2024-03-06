@@ -1,3 +1,5 @@
+Site - https://kamil-banaszek.pl/projekt Admin Password - 1234
+
 # Description 
 Simple SSR page, creating and working with an API, content management system (CMS)
 
