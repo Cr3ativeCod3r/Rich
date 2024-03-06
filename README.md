@@ -23,6 +23,6 @@ Backend:
 - SQL
 
 Frontend:
-- Js
+- JavaScript
 - CSS (some bootstrap)
 - EJS
