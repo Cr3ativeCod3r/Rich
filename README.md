@@ -15,7 +15,7 @@ Simple SSR page, creating and working with an API, content management system (CM
 - RESTful API
 
 # Tech Stack
-Here's the translation into English: This is a project done at university, so I used basic technologies.
+This is a project done at university, so I used basic technologies.
 
 Backend:
 - Nodejs
