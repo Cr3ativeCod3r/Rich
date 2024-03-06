@@ -34,7 +34,7 @@ Frontend:
 ```bash
 npm install
 ```
-3 Run
+3. Run
 ```bash
 npm start
 ```
