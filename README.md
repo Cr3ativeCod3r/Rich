@@ -26,3 +26,15 @@ Frontend:
 - JavaScript
 - CSS (some bootstrap)
 - EJS
+
+# Deploy
+
+1. Fill and rename to .env
+2. Intsall
+```bash
+npm install
+```
+3 Run
+```bash
+npm start
+```
