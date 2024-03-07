@@ -138,6 +138,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchRichData();
+  fetch(`${domain}/api/dynamic-content`)
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("dynamic-content").innerText = data.content;
+    console.log(data.content2);
+    document.getElementById("opis").innerText = data.content2;
+  })
+  .catch((error) => console.error("ERROR:", error));
 });
 
 //DESCRIPION
