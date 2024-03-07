@@ -30,7 +30,13 @@ Frontend:
 # Deploy
 
 1. Fill and rename to .env
-2. Install
+2. Create database (MySQLShell example)
+```bash
+\sql
+\connect root@localhost
+source /link/to/base.sql 
+```
+4. Install
 ```bash
 npm install
 ```
