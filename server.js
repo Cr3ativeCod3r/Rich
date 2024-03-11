@@ -1,15 +1,17 @@
 const express = require("express");
-const mariadb = require("mariadb");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 3000;
 const cors = require("cors");
 const session = require("express-session");
+const db = require("./config/db");
 
+//login
 require("dotenv").config();
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const passport = require("passport");
+const enpoint_ = process.env.ADDITIONAL_ENDPOINT;
+const domain_ = process.env.DOMAIN;
+
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -17,30 +19,27 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(express.static(__dirname + "/assets"));
+
+app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", require("ejs").__express);
 
 //VIEWS
-
-app.get(process.env.DOMAIN, (req, res) => {
-  res.render("index", { domain: process.env.DOMAIN });
-});
-app.get(process.env.ADDITIONAL_ENDPOINT + "/admin", checkAuth, (req, res) => {
-  res.render("admin", { domain: process.env.DOMAIN });
-});
-app.get(process.env.ADDITIONAL_ENDPOINT + "/login", (req, res) => {
-  res.render("login", { optional: process.env.ADDITIONAL_ENDPOINT });
+app.get("/", (req, res) => {
+  res.render("index", { user: req.user, domain: domain_ });
 });
 
-//CONNECT BASE
-
-const db = mariadb.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+app.get(enpoint_ + "/admin", checkAuth, (req, res) => {
+  res.render("admin", { domain: domain_ });
+});
+app.get(enpoint_ + "/login", (req, res) => {
+  res.render("login", { optional: enpoint_ });
 });
 
 //DYNAMIC TEXT
@@ -48,24 +47,25 @@ const db = mariadb.createPool({
 let dynamicContent = "Welcome rich people enjoyers";
 let dynamicContent2 = "Have Fun";
 
-app.put(process.env.DOMAIN + "/api/dynamic-content/edit", (req, res) => {
+app.put("/api/dynamic-content/edit", (req, res) => {
   const newContent = req.body;
   dynamicContent = newContent.content;
   dynamicContent2 = newContent.content2;
+  console.log(dynamicContent);
   res.send("succes");
 });
 
-app.get(process.env.DOMAIN + "/api/dynamic-content", (req, res) => {
+app.get("/api/dynamic-content", (req, res) => {
   res.json({ content: dynamicContent, content2: dynamicContent2 });
 });
 
 //ADMIN PANEL
 
-app.post(process.env.ADDITIONAL_ENDPOINT + "/admin/login", (req, res) => {
+app.post(enpoint_ + "/admin/login", (req, res) => {
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (req.body.password === adminPassword) {
     req.session.isAuthenticated = true;
-    res.redirect(process.env.ADDITIONAL_ENDPOINT + "/admin");
+    res.redirect(enpoint_ + "/admin");
   } else {
     res.send(alert("Wrong Password"));
   }
@@ -77,24 +77,24 @@ function checkAuth(req, res, next) {
   if (req.session.isAuthenticated) {
     next();
   } else {
-    res.redirect(process.env.ADDITIONAL_ENDPOINT + "/login");
+    res.redirect(enpoint_ + "/login");
   }
 }
 
-app.get(process.env.ADDITIONAL_ENDPOINT + "/logout", (req, res) => {
+app.get(enpoint_ + "/logout", (req, res) => {
   req.session.destroy(function (err) {
     if (err) {
       console.log(err);
     } else {
       res.clearCookie("connect.sid");
-      res.redirect(process.env.ADDITIONAL_ENDPOINT + "/login");
+      res.redirect(enpoint_ + "/");
     }
   });
 });
 
 //RESTFULAPI
 
-app.get(process.env.DOMAIN + "/rich", async (req, res) => {
+app.get(domain_ + "/rich", async (req, res) => {
   try {
     const connection = await db.getConnection();
     const rows = await connection.query(
@@ -110,7 +110,7 @@ app.get(process.env.DOMAIN + "/rich", async (req, res) => {
 
 //1-Comments
 
-app.get(process.env.DOMAIN + "/all", async (req, res) => {
+app.get(domain_ + "/all", async (req, res) => {
   try {
     const connection = await db.getConnection();
     const rows = await connection.query("SELECT * FROM post ORDER BY id DESC");
@@ -121,7 +121,7 @@ app.get(process.env.DOMAIN + "/all", async (req, res) => {
     res.status(500).send("SERVER_ERROR");
   }
 });
-app.post(process.env.DOMAIN + "/post/add", (req, res) => {
+app.post(domain_ + "/post/add", (req, res) => {
   const { nick, tresc } = req.body;
   var now = new Date();
   var czas = `${(now.getHours() < 10 ? "0" : "") + now.getHours()}:${
@@ -154,7 +154,7 @@ const months = [
   "December",
 ];
 
-app.delete(process.env.DOMAIN + "/post/delete/:id", (req, res) => {
+app.delete(domain_ + "/post/delete/:id", (req, res) => {
   const postId = req.params.id;
   db.query("DELETE FROM post WHERE id = ?", [postId], (err, result) => {
     if (err) {
@@ -167,7 +167,7 @@ app.delete(process.env.DOMAIN + "/post/delete/:id", (req, res) => {
 
 //2-ContactWithMe
 
-app.post(process.env.DOMAIN + "/submit-form", (req, res) => {
+app.post(domain_ + "/submit-form", (req, res) => {
   const { name, phone, email, message } = req.body;
   console.log("INFO:", req.body);
   //U CAN USE NODEMAILER
@@ -175,7 +175,7 @@ app.post(process.env.DOMAIN + "/submit-form", (req, res) => {
 
 //3-RichPeople
 
-app.post(process.env.DOMAIN + "/edit/add", (req, res) => {
+app.post(domain_ + "/edit/add", (req, res) => {
   const { imie, wiek, majatek, kraj, link_do_zdjecia, krotki_opis } = req.body;
   const sql = `INSERT INTO ludzie (imie, wiek, majatek, kraj, link_do_zdjecia, krotki_opis) VALUES (?, ?, ?, ?, ?, ?)`;
   db.query(
@@ -187,7 +187,7 @@ app.post(process.env.DOMAIN + "/edit/add", (req, res) => {
   );
 });
 
-app.delete(process.env.DOMAIN + "/edit/delete/:id", (req, res) => {
+app.delete(domain_ + "/edit/delete/:id", (req, res) => {
   const { id } = req.params;
   const sql = `DELETE FROM ludzie WHERE id = ?`;
   db.query(sql, [id], (err, result) => {
@@ -195,7 +195,7 @@ app.delete(process.env.DOMAIN + "/edit/delete/:id", (req, res) => {
   });
 });
 
-app.put(process.env.DOMAIN + "/edit/update/:id", (req, res) => {
+app.put(domain_ + "/edit/update/:id", (req, res) => {
   const { id } = req.params;
   const allowedFields = [
     "imie",
