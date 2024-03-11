@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchRichData();
 
-  fetch(`${domain}/api/dynamic-content`)
+  fetch(`${domain}/dynamic-content`)
   .then((response) => response.json())
   .then((data) => {
     document.getElementById("dynamic-content").innerText = data.content;
