@@ -138,10 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchRichData();
-<<<<<<< HEAD:public/js/script.js
 
-=======
->>>>>>> 3c04b48cf681ad3ddd827d25f4fead6e63cf7376:assets/script.js
   fetch(`${domain}/api/dynamic-content`)
   .then((response) => response.json())
   .then((data) => {

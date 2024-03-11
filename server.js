@@ -61,12 +61,7 @@ app.get("/api/dynamic-content", (req, res) => {
 
 //ADMIN PANEL
 
-<<<<<<< HEAD
 app.post(enpoint_ + "/admin/login", (req, res) => {
-=======
-//Login
-app.post(process.env.ADDITIONAL_ENDPOINT + "/admin/login", (req, res) => {
->>>>>>> 3c04b48cf681ad3ddd827d25f4fead6e63cf7376
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (req.body.password === adminPassword) {
     req.session.isAuthenticated = true;
@@ -74,18 +69,6 @@ app.post(process.env.ADDITIONAL_ENDPOINT + "/admin/login", (req, res) => {
   } else {
     res.send(alert("Wrong Password"));
   }
-});
-
-//Logout
-app.get(process.env.ADDITIONAL_ENDPOINT + "/logout", (req, res) => {
-  req.session.destroy(function (err) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.clearCookie("connect.sid");
-      res.redirect(process.env.ADDITIONAL_ENDPOINT + "/login");
-    }
-  });
 });
 
 //Middleware
@@ -98,7 +81,6 @@ function checkAuth(req, res, next) {
   }
 }
 
-<<<<<<< HEAD
 app.get(enpoint_ + "/logout", (req, res) => {
   req.session.destroy(function (err) {
     if (err) {
@@ -109,8 +91,6 @@ app.get(enpoint_ + "/logout", (req, res) => {
     }
   });
 });
-=======
->>>>>>> 3c04b48cf681ad3ddd827d25f4fead6e63cf7376
 
 //RESTFULAPI
 
